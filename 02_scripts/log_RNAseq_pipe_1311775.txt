@@ -1,0 +1,100 @@
+Loading BX Environment... Environment loaded.
+>>> INITIATING analyzer with command:
+	RNAseq_analyzer_181011.sh ../01_input/metadata_mouse.txt 4
+>>> MAKING output directory
+	mkdir ../03_output/2018-10-11_output/
+>>> INPUT: This script will process files from the metafile:
+	../01_input/metadata_mouse.txt
+>>> PLAN: This script will process the sample files into the following names: 
+	SAMPLE1	SAMPLE2	NAMES
+	EO070_S2_R1_001_test.fastq.gz	EO070_S2_R2_001_test.fastq.gz	EO070
+
+>>> GUNZIP: unzipping _R1.fastq.gz files:
+	gunzipping EO070_S2_R1_001_test.fastq.gz
+>>> GUNZIP: unzipping _R2.fastq.gz files:
+	gunzipping EO070_S2_R2_001_test.fastq.gz
+
+>>> TRIMMOMATIC: Trimming excess sequences from .fastq file
+
+>>> FASTQC: analyzing quality of each .fastq file
+	fastqc -o ../03_output/2018-10-11_output/02_fastqc/EO070_1 -t 20 ../01_input/EO070_S2_R1_001_test.fastq
+Started analysis of EO070_S2_R1_001_test.fastq
+Approx 5% complete for EO070_S2_R1_001_test.fastq
+Approx 10% complete for EO070_S2_R1_001_test.fastq
+Approx 15% complete for EO070_S2_R1_001_test.fastq
+Approx 20% complete for EO070_S2_R1_001_test.fastq
+Approx 25% complete for EO070_S2_R1_001_test.fastq
+Approx 30% complete for EO070_S2_R1_001_test.fastq
+Approx 35% complete for EO070_S2_R1_001_test.fastq
+Approx 40% complete for EO070_S2_R1_001_test.fastq
+Approx 45% complete for EO070_S2_R1_001_test.fastq
+Approx 50% complete for EO070_S2_R1_001_test.fastq
+Approx 55% complete for EO070_S2_R1_001_test.fastq
+Approx 60% complete for EO070_S2_R1_001_test.fastq
+Approx 65% complete for EO070_S2_R1_001_test.fastq
+Approx 70% complete for EO070_S2_R1_001_test.fastq
+Approx 75% complete for EO070_S2_R1_001_test.fastq
+Approx 80% complete for EO070_S2_R1_001_test.fastq
+Approx 85% complete for EO070_S2_R1_001_test.fastq
+Approx 90% complete for EO070_S2_R1_001_test.fastq
+Approx 95% complete for EO070_S2_R1_001_test.fastq
+Approx 100% complete for EO070_S2_R1_001_test.fastq
+Analysis complete for EO070_S2_R1_001_test.fastq
+
+real	0m14.247s
+user	0m17.357s
+sys	0m0.736s
+	fastqc -o ../03_output/2018-10-11_output/02_fastqc/EO070_2 -t 20 ../01_input/EO070_S2_R2_001_test.fastq
+Started analysis of EO070_S2_R2_001_test.fastq
+Approx 5% complete for EO070_S2_R2_001_test.fastq
+Approx 10% complete for EO070_S2_R2_001_test.fastq
+Approx 15% complete for EO070_S2_R2_001_test.fastq
+Approx 20% complete for EO070_S2_R2_001_test.fastq
+Approx 25% complete for EO070_S2_R2_001_test.fastq
+Approx 30% complete for EO070_S2_R2_001_test.fastq
+Approx 35% complete for EO070_S2_R2_001_test.fastq
+Approx 40% complete for EO070_S2_R2_001_test.fastq
+Approx 45% complete for EO070_S2_R2_001_test.fastq
+Approx 50% complete for EO070_S2_R2_001_test.fastq
+Approx 55% complete for EO070_S2_R2_001_test.fastq
+Approx 60% complete for EO070_S2_R2_001_test.fastq
+Approx 65% complete for EO070_S2_R2_001_test.fastq
+Approx 70% complete for EO070_S2_R2_001_test.fastq
+Approx 75% complete for EO070_S2_R2_001_test.fastq
+Approx 80% complete for EO070_S2_R2_001_test.fastq
+Approx 85% complete for EO070_S2_R2_001_test.fastq
+Approx 90% complete for EO070_S2_R2_001_test.fastq
+Approx 95% complete for EO070_S2_R2_001_test.fastq
+Approx 100% complete for EO070_S2_R2_001_test.fastq
+Analysis complete for EO070_S2_R2_001_test.fastq
+
+real	0m9.538s
+user	0m14.753s
+sys	0m0.692s
+
+>>> HISAT2: aligning each sample to the genome
+	$ hisat2 -x /projects/erinnish@colostate.edu/genomes/mm10/from_ucsc/mm10 -1 ../01_input/EO070_S2_R1_001_test.fastq -2 ../01_input/EO070_S2_R2_001_test.fastq -S ../03_output/2018-10-11_output/02_hisat2/EO070.sam --summary-file ../03_output/2018-10-11_output/02_hisat2/EO070_summary.txt --no-unal -p 4
+250000 reads; of these:
+  250000 (100.00%) were paired; of these:
+    104077 (41.63%) aligned concordantly 0 times
+    116323 (46.53%) aligned concordantly exactly 1 time
+    29600 (11.84%) aligned concordantly >1 times
+    ----
+    104077 pairs aligned concordantly 0 times; of these:
+      1862 (1.79%) aligned discordantly 1 time
+    ----
+    102215 pairs aligned 0 times concordantly or discordantly; of these:
+      204430 mates make up the pairs; of these:
+        156411 (76.51%) aligned 0 times
+        34691 (16.97%) aligned exactly 1 time
+        13328 (6.52%) aligned >1 times
+68.72% overall alignment rate
+
+real	0m53.394s
+user	1m6.915s
+sys	0m9.469s
+
+>>> HTSEQ: Run HTSeq-counts on all files to tabulate read counts per gene
+loadpy2: loadpy2 is no longer necessary to adjust the PYTHON environment
+	htseq-count --stranded=yes --minaqual=20 -r pos -q ../03_output/2018-10-11_output/04_htseq/EO070.sam /projects/erinnish@colostate.edu/genomes/mm10/from_ensembl/gtf/Mus_musculus_GRCm38_2UCSC.gtf > ../03_output/2018-10-11_output/04_htseq/EO070_counts.txt
+slurmstepd: error: *** JOB 1311775 ON shas0357 CANCELLED AT 2018-10-11T16:29:46 ***

@@ -1,0 +1,1 @@
+EO070_S2_R1_001_test.fastq.gz	EO070_S2_R2_001_test.fastq.gz	EO070	LCM_cells	mouse

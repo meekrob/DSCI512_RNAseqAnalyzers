@@ -1,0 +1,105 @@
+Loading BX Environment... Environment loaded.
+>>> INITIATING analyzer with command:
+	RNAseq_analyzer_181011.sh ../01_input/metadata_mouse.txt 4
+>>> MAKING output directory
+	mkdir ../03_output/2018-10-11_output/
+>>> INPUT: This script will process files from the metafile:
+	../01_input/metadata_mouse.txt
+>>> PLAN: This script will process the sample files into the following names: 
+	SAMPLE1	SAMPLE2	NAMES
+	EO070_S2_R1_001_test.fastq.gz	EO070_S2_R2_001_test.fastq.gz	EO070
+
+>>> GUNZIP: unzipping _R1.fastq.gz files:
+	gunzipping EO070_S2_R1_001_test.fastq.gz
+gzip: ../01_input/EO070_S2_R1_001_test.fastq.gz: No such file or directory
+>>> GUNZIP: unzipping _R2.fastq.gz files:
+	gunzipping EO070_S2_R2_001_test.fastq.gz
+gzip: ../01_input/EO070_S2_R2_001_test.fastq.gz: No such file or directory
+
+>>> TRIMMOMATIC: Trimming excess sequences from .fastq file
+
+>>> FASTQC: analyzing quality of each .fastq file
+	$ 
+
+real	0m0.000s
+user	0m0.000s
+sys	0m0.000s
+	$ 
+
+real	0m0.000s
+user	0m0.000s
+sys	0m0.000s
+
+>>> HISAT2: aligning each sample to the genome
+	$ 
+
+real	0m0.000s
+user	0m0.000s
+sys	0m0.000s
+
+>>> HTSEQ: Run HTSeq-counts on all files to tabulate read counts per gene
+	$ 
+
+real	0m0.000s
+user	0m0.000s
+sys	0m0.000s
+
+>>> SAMTOOLS/BAMCOVERAGE: to convert files to uploadable _sort.bam and _sort.bam.bai files:
+	Samtools and BamCoverage convert: EO070
+	$ samtools view --threads 4 -bS ../03_output/2018-10-11_output/03_hisat2/EO070.sam > ../03_output/2018-10-11_output/05_samtools/EO070.bam
+[E::hts_open_format] fail to open file '../03_output/2018-10-11_output/03_hisat2/EO070.sam'
+samtools view: failed to open "../03_output/2018-10-11_output/03_hisat2/EO070.sam" for reading: No such file or directory
+
+real	0m0.051s
+user	0m0.003s
+sys	0m0.003s
+	$ samtools sort --threads 4 -o ../03_output/2018-10-11_output/05_samtools/EO070_sort.bam --reference /projects/erinnish\@colostate.edu/genomes/mm10/from_ucsc/chromFa.tar.gz ../03_output/2018-10-11_output/05_samtools/EO070.bam
+
+real	0m0.008s
+user	0m0.002s
+sys	0m0.003s
+	$ samtools index ../03_output/2018-10-11_output/05_samtools/EO070_sort.bam
+
+real	0m0.007s
+user	0m0.001s
+sys	0m0.003s
+	$ bamCoverage -b ../03_output/2018-10-11_output/05_samtools/EO070_sort.bam -o ../03_output/2018-10-11_output/05_samtools/EO070_sort.bw --outFileFormat bigwig -p 4 --normalizeUsing CPM --binSize 1
+RuntimeError: module compiled against API version 0xc but this version of numpy is 0xa
+Traceback (most recent call last):
+  File "/projects/dcking@colostate.edu/bin/bamCoverage", line 4, in <module>
+    from deeptools.bamCoverage import main
+  File "/projects/dcking@colostate.edu/lib/python3.5/site-packages/deeptools/bamCoverage.py", line 8, in <module>
+    from deeptools import writeBedGraph  # This should be made directly into a bigWig
+  File "/projects/dcking@colostate.edu/lib/python3.5/site-packages/deeptools/writeBedGraph.py", line 5, in <module>
+    import pyBigWig
+ImportError: numpy.core.multiarray failed to import
+
+real	0m1.054s
+user	0m0.176s
+sys	0m0.441s
+
+>>> VERSIONS:
+
+>>> FASEQC VERSION:
+FastQC v0.11.5
+
+>>> HISAT2 VERSION:
+/projects/dcking@colostate.edu/bin/hisat2/hisat2-align-s version 2.1.0
+64-bit
+Built on login-node03
+Wed Jun  7 15:53:42 EDT 2017
+Compiler: gcc version 4.8.2 (GCC) 
+Options: -O3 -m64 -msse2 -funroll-loops -g3 -DPOPCNT_CAPABILITY
+Sizeof {int, long, long long, void*, size_t, off_t}: {4, 8, 8, 8, 8, 8}
+
+>>> SAMTOOLS VERSION:
+samtools 1.4.1
+Using htslib 1.4.1
+Copyright (C) 2017 Genome Research Ltd.
+
+>>> HTSEQ-COUNT VERSION:
+Public License v3. Part of the 'HTSeq' framework, version 0.9.1.
+
+>>> BAMCOVERAGE VERSION:
+bamCoverage 3.0.2
+>>> END: Analayzer complete.
