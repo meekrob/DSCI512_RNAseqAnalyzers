@@ -71,13 +71,13 @@ echo -e ">>> INITIATING analyzer with command:\n\t$0 $@"
 inputdir="../01_input/"
 
 #This is where the bt2 files live:
-hisat2path="/scratch/summit/erinnish@colostate.edu/DSCI512_RNAseq/PROJ02_yeastGenome/by_chrom/sc3"
+hisat2path="/scratch/summit/<eID>@colostate.edu/DSCI512_RNAseq/PROJ02_yeastGenome/by_chrom/sc3"
 
 #This is where the genome sequence lives:
-genomefa="/scratch/summit/erinnish@colostate.edu/DSCI512_RNAseq/PROJ02_yeastGenome/chromFa.tar.gz"
+genomefa="/scratch/summit/<eID>@colostate.edu/DSCI512_RNAseq/PROJ02_yeastGenome/chromFa.tar.gz"
 
 #This is where the gtf file lives:
-gtffile="/scratch/summit/erinnish@colostate.edu/DSCI512_RNAseq/PROJ02_yeastGenome/181115_Scer_annotation.gtf.gz"
+gtffile="/scratch/summit/<eID>@colostate.edu/DSCI512_RNAseq/PROJ02_yeastGenome/181115_Scer_annotation.gtf.gz"
     
 #Number of threads to use:
 pthread=$2

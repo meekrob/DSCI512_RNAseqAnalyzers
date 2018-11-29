@@ -2,17 +2,17 @@
 
 ################################################
 # Program:
-# RNAseq_cleanup_mouse_180706.sh
+# RNAseq_cleanup_181011.sh
 #
 # Author:
 # Erin Osborne Nishimura
 #
 # Date initiated:
-# July 6, 2018
+# October 11, 2018
 #
 # Description:
 #
-# This is a very basic pipeline to clean up the files generated from RNAseq_analyze_mouse_180706.sh
+# This is a very basic pipeline to clean up the files generated from RNAseq_analyzer_181117.sh
 #
 # Requires: A metadata file with two columns. The first two columns are fastq.gz file names. 
 #           The third column is a "nickname" of each sample
@@ -20,7 +20,7 @@
 #           Metadata file should be placed within the inputdir directory.
 # 
 # Executed with:
-# bash RNAseq_cleanup_mouse_180706.sh
+# bash RNAseq_cleanup_181011.sh
 ################################################
 
 echo -e ">>> INITIATING cleanup with command:\n\t$0 $@"
@@ -29,7 +29,7 @@ echo -e ">>> INITIATING cleanup with command:\n\t$0 $@"
 ####### MODIFY THIS SECTION #############
 
 #The input samples (metadata file and _fastq.gz files) live in directory:
-inputdir="../04_testing/"
+inputdir="../01_input/"
 
 #This is the output_directory:
 DATE=`date +%Y-%m-%d`
@@ -67,15 +67,13 @@ names=( $(cut -f 3 --output-delimiter=' ' $1) )
 echo -e ">>>Zipping files"
 for fastqfile in ${samples1[@]}
 do
-	unzippedfile=${fastqfile//.fastq.gz/.fastq}
-   echo -e "gzipping $unzippedfile"
-   gzip $inputdir$unzippedfile
+   echo -e "gzipping $fastqfile"
+   gzip $inputdir$fastqfile
 done
 for fastqfile in ${samples2[@]}
 do
-	unzippedfile=${fastqfile//.fastq.gz/.fastq}
-   echo -e "gzipping $unzippedfile"
-   gzip $inputdir$unzippedfile
+   echo -e "gzipping $fastqfile"
+   gzip $inputdir$fastqfile
 done
 
 
