@@ -2,6 +2,9 @@
 A simple set of wrappers and tools for RNA-seq analysis. These tools were designed for the DSCI512 RNA-seq analysis class
 
 
+----
+
+
 ## Let's download the script templates I've written on github.
 
 You will be able to tailor these templates to your own purposes.
@@ -52,5 +55,11 @@ bash RNAseq_analyzer_181117.sh ../01_input/metadata_aceticAcid_subset.txt $SLURM
    *  Make sure the metadata file is correct.
    * `$SLURM_NTASKS` automatically pulls the number of threads you have requested in the #SBATCH header.
 
+**Exercise**
+  * Tailor your execute_RNAseq_pipeline.sh script if you need to.
+
+-----
+
+## Let's navigate the analyze script
 
 
