@@ -31,7 +31,7 @@ $ git clone <paste path to github repository here>
 $ cp *.sh ../PROJ06_yeastDemo2/02_scripts
 ```
 
-Notice that instead of having a single script, you now have two scripts. The `execute` script calls the `analyze` script. 
+Notice that instead of having a single script, you now have a few scripts. These will work in a **Two step** method for executing jobs on summit. The `execute` script calls the `analyze` script. 
 
 To execute the pipeline, you would do the following:
 
@@ -39,7 +39,7 @@ To execute the pipeline, you would do the following:
 $ sbatch execute_RNAseq_pipeline.sh
 ```
 
-By doing this, the `execute` script would start the `analyze` script by calling the following lines of code:
+By doing this, the `execute` script will start the `analyze` script by calling the following lines of code:
 
 ```bash
 ##
