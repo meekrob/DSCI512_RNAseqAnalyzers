@@ -29,4 +29,12 @@ $ git clone <paste path to github repository here>
 $ cp *.sh ../PROJ06_yeastDemo2/02_scripts
 ```
 
+Notice that instead of having a single script, you now have two scripts. The ''execute'' script calls the ''analyze'' script. 
 
+To execute the pipeline, you would do the following:
+
+```bash
+$ sbatch execute_RNAseq_pipeline.sh
+```
+
+By doing this, the ''execute'' script would 
