@@ -89,3 +89,106 @@ If you use 24 cores on 1 node and run it on the testing queue, the script should
 
 ## It's cooking show time! Let's see what we baked!
 
+```bash
+.
+├── 02_fastqc
+│   ├── sample01_1
+│   │   ├── SRR3567551_1_fastqc.html
+│   │   └── SRR3567551_1_fastqc.zip
+│   ├── sample01_2
+│   │   ├── SRR3567551_2_fastqc.html
+│   │   └── SRR3567551_2_fastqc.zip
+│   ├── sample02_1
+│   │   ├── SRR3567552_1_fastqc.html
+│   │   └── SRR3567552_1_fastqc.zip
+│   ├── sample02_2
+│   │   ├── SRR3567552_2_fastqc.html
+│   │   └── SRR3567552_2_fastqc.zip
+│   ├── sample03_1
+│   │   ├── SRR3567554_1_fastqc.html
+│   │   └── SRR3567554_1_fastqc.zip
+│   ├── sample03_2
+│   │   ├── SRR3567554_2_fastqc.html
+│   │   └── SRR3567554_2_fastqc.zip
+│   ├── sample04_1
+│   │   ├── SRR3567555_1_fastqc.html
+│   │   └── SRR3567555_1_fastqc.zip
+│   ├── sample04_2
+│   │   ├── SRR3567555_2_fastqc.html
+│   │   └── SRR3567555_2_fastqc.zip
+│   ├── sample09_1
+│   │   ├── SRR3567674_1_fastqc.html
+│   │   └── SRR3567674_1_fastqc.zip
+│   ├── sample09_2
+│   │   ├── SRR3567674_2_fastqc.html
+│   │   └── SRR3567674_2_fastqc.zip
+│   ├── sample10_1
+│   │   ├── SRR3567676_1_fastqc.html
+│   │   └── SRR3567676_1_fastqc.zip
+│   ├── sample10_2
+│   │   ├── SRR3567676_2_fastqc.html
+│   │   └── SRR3567676_2_fastqc.zip
+│   ├── sample11_1
+│   │   ├── SRR3567677_1_fastqc.html
+│   │   └── SRR3567677_1_fastqc.zip
+│   ├── sample11_2
+│   │   ├── SRR3567677_2_fastqc.html
+│   │   └── SRR3567677_2_fastqc.zip
+│   ├── sample12_1
+│   │   ├── SRR3567679_1_fastqc.html
+│   │   └── SRR3567679_1_fastqc.zip
+│   └── sample12_2
+│       ├── SRR3567679_2_fastqc.html
+│       └── SRR3567679_2_fastqc.zip
+├── 03_hisat2
+│   ├── sample01.sam
+│   ├── sample01_summary.txt
+│   ├── sample02.sam
+│   ├── sample02_summary.txt
+│   ├── sample03.sam
+│   ├── sample03_summary.txt
+│   ├── sample04.sam
+│   ├── sample04_summary.txt
+│   ├── sample09.sam
+│   ├── sample09_summary.txt
+│   ├── sample10.sam
+│   ├── sample10_summary.txt
+│   ├── sample11.sam
+│   ├── sample11_summary.txt
+│   ├── sample12.sam
+│   └── sample12_summary.txt
+├── 04_feature
+│   ├── counts.txt
+│   └── counts.txt.summary
+└── 05_samtools
+    ├── sample01.bam
+    ├── sample01_sort.bam
+    ├── sample01_sort.bam.bai
+    ├── sample01_sort.bw
+    ├── sample02.bam
+    ├── sample02_sort.bam
+    ├── sample02_sort.bam.bai
+    ├── sample02_sort.bw
+    ├── sample03.bam
+    ├── sample03_sort.bam
+    ├── sample03_sort.bam.bai
+    ├── sample03_sort.bw
+    ├── sample04.bam
+    ├── sample04_sort.bam
+    ├── sample04_sort.bam.bai
+    ├── sample04_sort.bw
+    ├── sample09.bam
+    ├── sample09_sort.bam
+    ├── sample09_sort.bam.bai
+    ├── sample09_sort.bw
+    ├── sample10.bam
+    ├── sample10_sort.bam
+    ├── sample10_sort.bam.bai
+    ├── sample10_sort.bw
+    └── sample11.bam
+
+20 directories, 75 files
+```
+
+
+
