@@ -62,4 +62,23 @@ bash RNAseq_analyzer_181117.sh ../01_input/metadata_aceticAcid_subset.txt $SLURM
 
 ## Let's navigate the analyze script
 
+There is a section ####### MODIFY THIS SECTION #############
 
+**Exercise** 
+
+  * Modify this section to match your requests
+  
+**Exercise**
+  
+  * Now run the script with the following command:
+  
+```bash
+$ sbatch execute_RNAseq_pipeline.sh
+```
+
+  * Check on the script with
+  
+```bash
+$ scheck   #This is an alias of squeue -u $USER
+$ squeue -u $USER --start
+```
