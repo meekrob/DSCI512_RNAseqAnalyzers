@@ -48,7 +48,7 @@ source /projects/dcking@colostate.edu/paths.bashrc
 bash RNAseq_analyzer_181117.sh ../01_input/metadata_aceticAcid_subset.txt $SLURM_NTASKS
 ```
 
-Usage: bash RNAseq_analyzer_181117.sh <metadatafile.txt> <number of threads>
+**Usage:** `bash RNAseq_analyzer_181117.sh <metadatafile.txt> <number of threads>`
    *  Make sure the metadata file is correct.
    * `$SLURM_NTASKS` automatically pulls the number of threads you have requested in the #SBATCH header.
 
