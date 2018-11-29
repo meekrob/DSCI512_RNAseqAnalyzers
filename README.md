@@ -197,5 +197,5 @@ If you use 24 cores on 1 node and run it on the testing queue, the script should
 20 directories, 82 files
 ```
 
-
+[Visualizing data using IGV](http://rna.colostate.edu/dokuwiki/doku.php?id=wiki:igv_visualization)
 
