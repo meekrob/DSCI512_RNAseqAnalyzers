@@ -83,7 +83,7 @@ $ scheck   #This is an alias of squeue -u $USER
 $ squeue -u $USER --start
 ```
 
-If you use 24 cores on 1 node and run it on the testing queue, the script should take 26 minutes to run.
+If you use 24 cores on 1 node and run it on the testing queue, the script should take 27 minutes to run.
 
 -----
 
@@ -185,9 +185,16 @@ If you use 24 cores on 1 node and run it on the testing queue, the script should
     ├── sample10_sort.bam
     ├── sample10_sort.bam.bai
     ├── sample10_sort.bw
-    └── sample11.bam
-
-20 directories, 75 files
+    ├── sample11.bam
+    ├── sample11_sort.bam
+    ├── sample11_sort.bam.bai
+    ├── sample11_sort.bw
+    ├── sample12.bam
+    ├── sample12_sort.bam
+    ├── sample12_sort.bam.bai
+    └── sample12_sort.bw
+    
+20 directories, 82 files
 ```
 
 
