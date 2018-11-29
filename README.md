@@ -16,3 +16,15 @@ DSCI512_RNAseqAnalyzers
   * Switch over to summit.
   * Navigate into /scratch/summit/<eID>@colostate.edu
   
+```bash
+$ cd /scratch/summit/<eID>@colostate.edu    #Replace <eID> with your EID
+$ git clone <paste path to github repository here>
+```
+
+** Explore what you obtained.**
+
+** Copy and paste the template codes over to your `02_scripts` directory
+
+```bash
+$ cp *.sh ../PROJ06_yeastDemo2/02_scripts
+```
