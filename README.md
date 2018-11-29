@@ -82,3 +82,10 @@ $ sbatch execute_RNAseq_pipeline.sh
 $ scheck   #This is an alias of squeue -u $USER
 $ squeue -u $USER --start
 ```
+
+If you use 24 cores on 1 node and run it on the testing queue, the script should take 26 minutes to run.
+
+-----
+
+## It's cooking show time! Let's see what we baked!
+
