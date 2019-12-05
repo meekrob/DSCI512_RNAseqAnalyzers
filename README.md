@@ -229,5 +229,5 @@ $ tree
 10 directories, 62 files
 ```
 
-[Visualizing data using IGV](http://rna.colostate.edu/dokuwiki/doku.php?id=wiki:igv_visualization)
+[Visualizing data using IGV](http://rna.colostate.edu/2019/doku.php?id=wiki:igv_visualization)
 
