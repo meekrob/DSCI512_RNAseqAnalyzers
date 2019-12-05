@@ -68,19 +68,22 @@ echo -e ">>> INITIATING analyzer with command:\n\t$0 $@"
 ####### MODIFY THIS SECTION #############
 
 #The input samples (metadata file and _fastq.gz files) live in directory:
-inputdir="../../01_input/"
+inputdir="<inputdir>"
 
 #This is where the ht2 files live:
-hisat2path="/scratch/summit/erinnish@colostate.edu/DSCI512_RNAseq/PROJ01_ce11Build/ce11"
+hisat2path="<hisatpath/previx>"
 
 #This is where the genome sequence lives:
-genomefa="/scratch/summit/erinnish@colostate.edu/DSCI512_RNAseq/PROJ01_ce11Build/chromFa.tar.gz"
+genomefa="<genome.fa>"
 
 #This is where the gtf file lives:
-gtffile="../../01_input/ce11_annotation_ensembl_to_ucsc.gtf.gz"
-    
-#Number of threads to use:
-pthread=$2
+gtffile="<annotation.gtf>"
+
+#This is the output_directory:
+DATE=`date +%Y-%m-%d`
+#OR
+#DATE='2018-10-16'
+outputdir="../../03_output/"$DATE"_output/"
 
 
 ########## DONE MODIFYING ###############
@@ -98,13 +101,10 @@ bamCoverage='singularity exec /projects/dcking@colostate.edu/containers/Summit_R
 
 ########## BEGIN CODE ###############
 
-#This is the output_directory:
+#Number of threads to use:
+pthread=$2
 
-DATE=`date +%Y-%m-%d`
-#DATE='2018-10-16'
-outputdir="../../03_output/"$DATE"_output/"
-
-
+# Make output directories
 echo -e ">>> MAKING output directory"
 echo -e "\tmkdir $outputdir"
 mkdir -p $outputdir
