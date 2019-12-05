@@ -56,7 +56,7 @@ bash RNAseq_analyzer_191204.sh ../../01_input/metadata_gomezOrte_subset.txt $SLU
   
 **Answer**
 
-  *Your execute script should look like this: 
+  * Your execute script should look like this: 
 
 ```bash
 #!/usr/bin/env bash
@@ -89,16 +89,40 @@ bash RNAseq_analyzer_191204.sh ../../01_input/metadata_gomezOrte_subset.txt $SLU
   * Open RNAseq_analyze_191204.sh in an editor window
   * Tailor your script to suit your own inputs
   * There is a section ####### MODIFY THIS SECTION ############# Modify this section to match your requests
-
+  * Add a relative path to your input directory
+  * Add an absolute path to your hisat2path (needs to be int he format /path/to/hisat2indices/prefix)
+  * Add an absolute path to your full genome fasta file (chrom.fa.gz)
+  * Add the relative path to your annotation file.
+  * Don't change the default output directory
+  
+  * Now run the script with the following command:
+  
 ```bash
+$ sbatch --reservation=csuhpc_dec05 execute_RNAseq_pipeline.sh
+```
+
+  * Check on the script with
+  
+```bash
+$ squeue -u $USER
+```
+
+**Answer**
+
+  * It should look something like this with your eID in place of eID
+```bash
+
+
+####### MODIFY THIS SECTION #############
+
 #The input samples (metadata file and _fastq.gz files) live in directory:
 inputdir="../../01_input/"
 
 #This is where the ht2 files live:
-hisat2path="/scratch/summit/erinnish@colostate.edu/DSCI512_RNAseq/PROJ01_ce11Build/ce11"
+hisat2path="/scratch/summit/eID@colostate.edu/DSCI512_RNAseq/PROJ01_ce11Build/ce11"
 
 #This is where the genome sequence lives:
-genomefa="/scratch/summit/erinnish@colostate.edu/DSCI512_RNAseq/PROJ01_ce11Build/chromFa.tar.gz"
+genomefa="/scratch/summit/eID@colostate.edu/DSCI512_RNAseq/PROJ01_ce11Build/chromFa.tar.gz"
 
 #This is where the gtf file lives:
 gtffile="../../01_input/ce11_annotation_ensembl_to_ucsc.gtf.gz"
@@ -107,25 +131,17 @@ gtffile="../../01_input/ce11_annotation_ensembl_to_ucsc.gtf.gz"
 DATE=`date +%Y-%m-%d`
 #OR
 #DATE='2018-10-16'
-outputdir
-```
-  
-**Exercise**
-  
-  * Now run the script with the following command:
-  
-```bash
-$ sbatch execute_RNAseq_pipeline.sh
+outputdir="../../03_output/"$DATE"_output/"
+
+
 ```
 
-  * Check on the script with
-  
-```bash
-$ scheck   #This is an alias of squeue -u $USER
-$ squeue -u $USER --start
-```
 
-If you use 16 cores on 1 node and run it on the testing queue, the script should take 15 minutes to run.
+The script typically will take this long:
+
+18 samples, 16 tasks = 38 min
+9 samples, 16 tasks = 24 min
+
 
 -----
 
