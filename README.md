@@ -28,7 +28,8 @@ $ git clone <paste path to github repository here>
 **Copy and paste the template codes over to your `02_scripts` directory**
 
 ```bash
-$ cp *.sh ../PROJ06_yeastDemo2/02_scripts
+$ cp *.sh ../PROJ04_GomezOrte2/02_scripts
+$ cp *.sbatch ../PROJ04_GomezOrte2/02_scripts
 ```
 
 Notice that instead of having a single script, you now have a few scripts. These will work in a **Two step** method for executing jobs on summit. The `execute` script calls the `analyze` script. 
@@ -36,21 +37,18 @@ Notice that instead of having a single script, you now have a few scripts. These
 To execute the pipeline, you would do the following:
 
 ```bash
-$ sbatch execute_RNAseq_pipeline.sh
+$ sbatch execute_RNAseq_pipeline.sbatch
 ```
 
 By doing this, the `execute` script will start the `analyze` script by calling the following lines of code:
 
 ```bash
-##
-#source /scratch/summit/erinnish@colostate.edu/activate.bashrc
-source /projects/dcking@colostate.edu/paths.bashrc
 
 ## execute the RNA-seq_pipeline
-bash RNAseq_analyzer_181117.sh ../01_input/metadata_aceticAcid_subset.txt $SLURM_NTASKS
+bash RNAseq_analyzer_191204.sh ../../01_input/metadata_gomezOrte_subset.txt $SLURM_NTASKS
 ```
 
-**Usage:** `bash RNAseq_analyzer_181117.sh <metadatafile.txt> <number of threads>`
+**Usage:** `bash RNAseq_analyzer_191204.sh <metadatafile.txt> <number of threads>`
    *  Make sure the metadata file is correct.
    * `$SLURM_NTASKS` automatically pulls the number of threads you have requested in the #SBATCH header.
 
@@ -82,7 +80,7 @@ $ scheck   #This is an alias of squeue -u $USER
 $ squeue -u $USER --start
 ```
 
-If you use 24 cores on 1 node and run it on the testing queue, the script should take 27 minutes to run.
+If you use 16 cores on 1 node and run it on the testing queue, the script should take 15 minutes to run.
 
 -----
 
@@ -90,110 +88,111 @@ If you use 24 cores on 1 node and run it on the testing queue, the script should
 
 ```bash
 .
-├── 02_fastqc
-│   ├── sample01_1
-│   │   ├── SRR3567551_1_fastqc.html
-│   │   └── SRR3567551_1_fastqc.zip
-│   ├── sample01_2
-│   │   ├── SRR3567551_2_fastqc.html
-│   │   └── SRR3567551_2_fastqc.zip
-│   ├── sample02_1
-│   │   ├── SRR3567552_1_fastqc.html
-│   │   └── SRR3567552_1_fastqc.zip
-│   ├── sample02_2
-│   │   ├── SRR3567552_2_fastqc.html
-│   │   └── SRR3567552_2_fastqc.zip
-│   ├── sample03_1
-│   │   ├── SRR3567554_1_fastqc.html
-│   │   └── SRR3567554_1_fastqc.zip
-│   ├── sample03_2
-│   │   ├── SRR3567554_2_fastqc.html
-│   │   └── SRR3567554_2_fastqc.zip
-│   ├── sample04_1
-│   │   ├── SRR3567555_1_fastqc.html
-│   │   └── SRR3567555_1_fastqc.zip
-│   ├── sample04_2
-│   │   ├── SRR3567555_2_fastqc.html
-│   │   └── SRR3567555_2_fastqc.zip
-│   ├── sample09_1
-│   │   ├── SRR3567674_1_fastqc.html
-│   │   └── SRR3567674_1_fastqc.zip
-│   ├── sample09_2
-│   │   ├── SRR3567674_2_fastqc.html
-│   │   └── SRR3567674_2_fastqc.zip
-│   ├── sample10_1
-│   │   ├── SRR3567676_1_fastqc.html
-│   │   └── SRR3567676_1_fastqc.zip
-│   ├── sample10_2
-│   │   ├── SRR3567676_2_fastqc.html
-│   │   └── SRR3567676_2_fastqc.zip
-│   ├── sample11_1
-│   │   ├── SRR3567677_1_fastqc.html
-│   │   └── SRR3567677_1_fastqc.zip
-│   ├── sample11_2
-│   │   ├── SRR3567677_2_fastqc.html
-│   │   └── SRR3567677_2_fastqc.zip
-│   ├── sample12_1
-│   │   ├── SRR3567679_1_fastqc.html
-│   │   └── SRR3567679_1_fastqc.zip
-│   └── sample12_2
-│       ├── SRR3567679_2_fastqc.html
-│       └── SRR3567679_2_fastqc.zip
+├── 02_fastp
+│   ├── EG01
+│   │   ├── EG01_report.html
+│   │   ├── EG01_report.json
+│   │   ├── EG01_trim_1.fastq
+│   │   └── EG01_trim_2.fastq
+│   ├── EG02
+│   │   ├── EG02_report.html
+│   │   ├── EG02_report.json
+│   │   ├── EG02_trim_1.fastq
+│   │   └── EG02_trim_2.fastq
+│   ├── EG03
+│   │   ├── EG03_report.html
+│   │   ├── EG03_report.json
+│   │   ├── EG03_trim_1.fastq
+│   │   └── EG03_trim_2.fastq
+│   ├── EG04
+│   │   ├── EG04_report.html
+│   │   ├── EG04_report.json
+│   │   ├── EG04_trim_1.fastq
+│   │   └── EG04_trim_2.fastq
+│   ├── EG05
+│   │   ├── EG05_report.html
+│   │   ├── EG05_report.json
+│   │   ├── EG05_trim_1.fastq
+│   │   └── EG05_trim_2.fastq
+│   ├── EG06
+│   │   ├── EG06_report.html
+│   │   ├── EG06_report.json
+│   │   ├── EG06_trim_1.fastq
+│   │   └── EG06_trim_2.fastq
+│   ├── EG07
+│   │   ├── EG07_report.html
+│   │   ├── EG07_report.json
+│   │   ├── EG07_trim_1.fastq
+│   │   └── EG07_trim_2.fastq
+│   ├── EG08
+│   │   ├── EG08_report.html
+│   │   ├── EG08_report.json
+│   │   ├── EG08_trim_1.fastq
+│   │   └── EG08_trim_2.fastq
+│   └── EG109
+│       ├── EG09_report.html
+│       ├── EG09_report.json
+│       ├── EG09_trim_1.fastq
+│       └── EG09_trim_2.fastq
 ├── 03_hisat2
-│   ├── sample01.sam
-│   ├── sample01_summary.txt
-│   ├── sample02.sam
-│   ├── sample02_summary.txt
-│   ├── sample03.sam
-│   ├── sample03_summary.txt
-│   ├── sample04.sam
-│   ├── sample04_summary.txt
-│   ├── sample09.sam
-│   ├── sample09_summary.txt
-│   ├── sample10.sam
-│   ├── sample10_summary.txt
-│   ├── sample11.sam
-│   ├── sample11_summary.txt
-│   ├── sample12.sam
-│   └── sample12_summary.txt
+│   ├── EG01.sam
+│   ├── EG01_summary.txt
+│   ├── EG02.sam
+│   ├── EG02_summary.txt
+│   ├── EG03.sam
+│   ├── EG03_summary.txt
+│   ├── EG04.sam
+│   ├── EG04_summary.txt
+│   ├── EG05.sam
+│   ├── EG05_summary.txt
+│   ├── EG06.sam
+│   ├── EG06_summary.txt
+│   ├── EG07.sam
+│   ├── EG07_summary.txt
+│   ├── EG08.sam
+│   ├── EG08_summary.txt
+│   ├── EG09.sam
+│   └── EG09_summary.txt
 ├── 04_feature
-│   ├── counts.txt
-│   └── counts.txt.summary
+│   ├── counts.txt
+│   └── counts.txt.summary
 └── 05_samtools
-    ├── sample01.bam
-    ├── sample01_sort.bam
-    ├── sample01_sort.bam.bai
-    ├── sample01_sort.bw
-    ├── sample02.bam
-    ├── sample02_sort.bam
-    ├── sample02_sort.bam.bai
-    ├── sample02_sort.bw
-    ├── sample03.bam
-    ├── sample03_sort.bam
-    ├── sample03_sort.bam.bai
-    ├── sample03_sort.bw
-    ├── sample04.bam
-    ├── sample04_sort.bam
-    ├── sample04_sort.bam.bai
-    ├── sample04_sort.bw
-    ├── sample09.bam
-    ├── sample09_sort.bam
-    ├── sample09_sort.bam.bai
-    ├── sample09_sort.bw
-    ├── sample10.bam
-    ├── sample10_sort.bam
-    ├── sample10_sort.bam.bai
-    ├── sample10_sort.bw
-    ├── sample11.bam
-    ├── sample11_sort.bam
-    ├── sample11_sort.bam.bai
-    ├── sample11_sort.bw
-    ├── sample12.bam
-    ├── sample12_sort.bam
-    ├── sample12_sort.bam.bai
-    └── sample12_sort.bw
-    
-20 directories, 82 files
+    ├── EG01.bam
+    ├── EG01_sort.bam
+    ├── EG01_sort.bam.bai
+    ├── EG01_sort.bw
+    ├── EG02.bam
+    ├── EG02_sort.bam
+    ├── EG02_sort.bam.bai
+    ├── EG02_sort.bw
+    ├── EG03.bam
+    ├── EG03_sort.bam
+    ├── EG03_sort.bam.bai
+    ├── EG03_sort.bw
+    ├── EG04.bam
+    ├── EG04_sort.bam
+    ├── EG04_sort.bam.bai
+    ├── EG04_sort.bw
+    ├── EG05.bam
+    ├── EG05_sort.bam
+    ├── EG05_sort.bam.bai
+    ├── EG05_sort.bw
+    ├── EG06.bam
+    ├── EG06_sort.bam
+    ├── EG06_sort.bam.bai
+    ├── EG06_sort.bw
+    ├── EG07.bam
+    ├── EG07_sort.bam
+    ├── EG07_sort.bam.bai
+    ├── EG07_sort.bw
+    ├── EG08.bam
+    ├── EG08_sort.bam
+    ├── EG08_sort.bam.bai
+    ├── EG08_sort.bw
+    ├── EG09.bam
+    ├── EG09_sort.bam
+    ├── EG09_sort.bam.bai
+    └── EG09_sort.bw
 ```
 
 [Visualizing data using IGV](http://rna.colostate.edu/dokuwiki/doku.php?id=wiki:igv_visualization)
