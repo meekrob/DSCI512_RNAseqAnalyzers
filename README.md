@@ -98,8 +98,10 @@ bash RNAseq_analyzer_191204.sh ../../01_input/metadata_gomezOrte_subset.txt $SLU
   * Now run the script with the following command:
   
 ```bash
-$ sbatch --reservation=csuhpc_dec05 execute_RNAseq_pipeline.sh
+$ sbatch --reservation=csuhpc_dec05 execute_RNAseq_pipeline.sbatch
 ```
+
+  * Note, don't use the option --reservation=csuhpc_dec05 when you are doing homework or working outside classtime
 
   * Check on the script with
   
@@ -141,6 +143,7 @@ The script typically will take this long:
 
 18 samples, 16 tasks = 38 min
 9 samples, 16 tasks = 24 min
+6 samples, 6 tasks = 
 
 
 -----
@@ -148,6 +151,7 @@ The script typically will take this long:
 ## It's cooking show time! Let's see what we baked!
 
 ```bash
+$ tree
 .
 ├── 02_fastp
 │   ├── EG01
@@ -175,26 +179,11 @@ The script typically will take this long:
 │   │   ├── EG05_report.json
 │   │   ├── EG05_trim_1.fastq
 │   │   └── EG05_trim_2.fastq
-│   ├── EG06
-│   │   ├── EG06_report.html
-│   │   ├── EG06_report.json
-│   │   ├── EG06_trim_1.fastq
-│   │   └── EG06_trim_2.fastq
-│   ├── EG07
-│   │   ├── EG07_report.html
-│   │   ├── EG07_report.json
-│   │   ├── EG07_trim_1.fastq
-│   │   └── EG07_trim_2.fastq
-│   ├── EG08
-│   │   ├── EG08_report.html
-│   │   ├── EG08_report.json
-│   │   ├── EG08_trim_1.fastq
-│   │   └── EG08_trim_2.fastq
-│   └── EG109
-│       ├── EG09_report.html
-│       ├── EG09_report.json
-│       ├── EG09_trim_1.fastq
-│       └── EG09_trim_2.fastq
+│   └── EG06
+│       ├── EG06_report.html
+│       ├── EG06_report.json
+│       ├── EG06_trim_1.fastq
+│       └── EG06_trim_2.fastq
 ├── 03_hisat2
 │   ├── EG01.sam
 │   ├── EG01_summary.txt
@@ -207,13 +196,7 @@ The script typically will take this long:
 │   ├── EG05.sam
 │   ├── EG05_summary.txt
 │   ├── EG06.sam
-│   ├── EG06_summary.txt
-│   ├── EG07.sam
-│   ├── EG07_summary.txt
-│   ├── EG08.sam
-│   ├── EG08_summary.txt
-│   ├── EG09.sam
-│   └── EG09_summary.txt
+│   └── EG06_summary.txt
 ├── 04_feature
 │   ├── counts.txt
 │   └── counts.txt.summary
@@ -241,19 +224,9 @@ The script typically will take this long:
     ├── EG06.bam
     ├── EG06_sort.bam
     ├── EG06_sort.bam.bai
-    ├── EG06_sort.bw
-    ├── EG07.bam
-    ├── EG07_sort.bam
-    ├── EG07_sort.bam.bai
-    ├── EG07_sort.bw
-    ├── EG08.bam
-    ├── EG08_sort.bam
-    ├── EG08_sort.bam.bai
-    ├── EG08_sort.bw
-    ├── EG09.bam
-    ├── EG09_sort.bam
-    ├── EG09_sort.bam.bai
-    └── EG09_sort.bw
+    └── EG06_sort.bw
+
+10 directories, 62 files
 ```
 
 [Visualizing data using IGV](http://rna.colostate.edu/dokuwiki/doku.php?id=wiki:igv_visualization)
