@@ -20,17 +20,13 @@ DSCI512_RNAseqAnalyzers
   
 ```bash
 $ cd /scratch/summit/<eID>@colostate.edu    #Replace <eID> with your EID
+$ cd PROJ04_GomezOrte2/02_scripts
 $ git clone <paste path to github repository here>
 ```
 
 **Explore what you obtained.**
 
-**Copy and paste the template codes over to your `02_scripts` directory**
 
-```bash
-$ cp *.sh ../PROJ04_GomezOrte2/02_scripts
-$ cp *.sbatch ../PROJ04_GomezOrte2/02_scripts
-```
 
 Notice that instead of having a single script, you now have a few scripts. These will work in a **Two step** method for executing jobs on summit. The `execute` script calls the `analyze` script. 
 
