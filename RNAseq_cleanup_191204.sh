@@ -34,7 +34,7 @@ inputdir="../../01_input/"
 #This is the output_directory:
 #DATE=`date +%Y-%m-%d`
 #OR
-#DATE=2019-12-04
+DATE=2019-12-04
 outputdir="../../03_output/"$DATE"_output/"
 
 
@@ -64,17 +64,17 @@ names=( $(cut -f 3 --output-delimiter=' ' $1) )
 
 ### REZIP ALL THE INPUT FILES: 
 
-echo -e ">>>Zipping files"
-for fastqfile in ${samples1[@]}
-do
-   echo -e "gzipping $fastqfile"
-   gzip $inputdir$fastqfile
-done
-for fastqfile in ${samples2[@]}
-do
-   echo -e "gzipping $fastqfile"
-   gzip $inputdir$fastqfile
-done
+#echo -e ">>>Zipping files"
+#for fastqfile in ${samples1[@]}
+#do
+#   echo -e "gzipping $fastqfile"
+#   gzip $inputdir$fastqfile
+#done
+#for fastqfile in ${samples2[@]}
+#do
+#   echo -e "gzipping $fastqfile"
+#   gzip $inputdir$fastqfile
+#done
 
 
 
@@ -83,8 +83,14 @@ done
 
 # Delete .sam files.  X.sam files are huge and redundant with _sort.bam files. 
 echo -e "\n>>> DELETING .sam files. Ensuring that _sort.bam files exists and keeping it:"
-outhisat2=$outputdir"02_hisat2/"
-samout=$outputdir"03_samtools/"
+outhisat2=$outputdir"03_hisat2/"
+samout=$outputdir"05_samtools/"
+
+for (( counter=0; counter < ${#names[@]}; counter++ ))
+do
+    echo -e ${names[$counter]}
+
+done
 
 for seqname in ${names[@]}
 do

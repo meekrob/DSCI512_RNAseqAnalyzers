@@ -12,9 +12,9 @@
   ######### CHANGE <eID> TO YOUR EID: ############
 
 ## execute the RNA-seq_pipeline
-bash RNAseq_analyzer_191204.sh ../../01_input/metadata_gomezOrte.txt $SLURM_NTASKS
+#bash RNAseq_analyzer_191204.sh ../../01_input/metadata_gomezOrte.txt $SLURM_NTASKS
    ######### MODIFY the SECOND argument to point to YOUR metadata.file ######### 
 
 ## clean up by zipping .fastq files and deleting extra files
-#bash RNAseq_cleanup_mouse_181011.sh ../04_testing/metadata_mouse.txt
+bash RNAseq_cleanup_191204.sh ../../01_input/metadata_gomezOrte.txt 
    ######### modify the SECOND argument to point to YOUR metadata.file ######### 
