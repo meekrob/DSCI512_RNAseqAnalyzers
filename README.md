@@ -45,14 +45,18 @@ bash RNAseq_analyzer_191204.sh ../../01_input/metadata_gomezOrte_subset.txt $SLU
 
 **Usage:** `bash RNAseq_analyzer_191204.sh <metadatafile.txt> <number of threads>`
    *  Make sure the metadata file is correct.
-   * `$SLURM_NTASKS` automatically pulls the number of threads you have requested in the #SBATCH header.
+   *  $SLURM_NTASKS automatically pulls the number of threads you have requested in the #SBATCH header.
 
 **Exercise**
-  * Tailor your execute_RNAseq_pipeline.sh script if you need to.
+  * Open execute_RNAseq_pipeline.sbatch in an editor window
+  * Tailor your execute_RNAseq_pipeline.sbatch script to suit your own inputs
+  * Check the sbatch preamble to make sure everything appears to be working correctly
+  * Include the proper path to your metadata file
+
   
 **Answer**
 
-  *Your header should look like this 
+  *Your execute script should look like this: 
 
 ```bash
 #!/usr/bin/env bash
@@ -71,17 +75,40 @@ bash RNAseq_analyzer_191204.sh ../../01_input/metadata_gomezOrte_subset.txt $SLU
 ## execute the RNA-seq_pipeline
 bash RNAseq_analyzer_191204.sh ../../01_input/metadata_gomezOrte_subset.txt $SLURM_NTASKS
    ######### MODIFY the SECOND argument to point to YOUR metadata.file ######### 
+
+## clean up by zipping .fastq files and deleting extra files
+#bash RNAseq_cleanup_191204.sh ../../01_input/metadata_gomezOrte_subset.txt 
+   ######### modify the SECOND argument to point to YOUR metadata.file ######### 
 ```
 
 -----
 
 ## Let's navigate the analyze script
 
-There is a section ####### MODIFY THIS SECTION #############
+**Exercise**
+  * Open RNAseq_analyze_191204.sh in an editor window
+  * Tailor your script to suit your own inputs
+  * There is a section ####### MODIFY THIS SECTION ############# Modify this section to match your requests
 
-**Exercise** 
+```bash
+#The input samples (metadata file and _fastq.gz files) live in directory:
+inputdir="../../01_input/"
 
-  * Modify this section to match your requests
+#This is where the ht2 files live:
+hisat2path="/scratch/summit/erinnish@colostate.edu/DSCI512_RNAseq/PROJ01_ce11Build/ce11"
+
+#This is where the genome sequence lives:
+genomefa="/scratch/summit/erinnish@colostate.edu/DSCI512_RNAseq/PROJ01_ce11Build/chromFa.tar.gz"
+
+#This is where the gtf file lives:
+gtffile="../../01_input/ce11_annotation_ensembl_to_ucsc.gtf.gz"
+
+#This is the output_directory:
+DATE=`date +%Y-%m-%d`
+#OR
+#DATE='2018-10-16'
+outputdir
+```
   
 **Exercise**
   
