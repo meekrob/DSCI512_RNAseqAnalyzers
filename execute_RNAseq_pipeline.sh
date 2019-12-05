@@ -2,7 +2,7 @@
 
 #SBATCH --job-name=test_RNAseq_pipeline 
 #SBATCH --nodes=1
-#SBATCH --ntasks=24      # modify this number to reflect how many cores you want to use (up to 24)
+#SBATCH --ntasks=6      # modify this number to reflect how many cores you want to use (up to 24)
 #SBATCH --partition=shas-testing  #modify this to reflect which queue you want to use. Options are 'shas' and 'shas-testing'
 #SBATCH --qos=testing     # modify this to reflect which queue you want to use. Options are 'normal' and 'testing'
 #SBATCH --time=0:29:00   # modify this to reflect how long to let the job go. 
@@ -11,7 +11,14 @@
 
 
 ## Source software
-source /scratch/summit/<eID>@colostate.edu/activate.bashrc
+module load singularity
+module list
+
+fastp='singularity exec /projects/dcking@colostate.edu/containers/Summit_RNAseq_container.sif fastp'
+hisat2='singularity exec /projects/dcking@colostate.edu/containers/Summit_RNAseq_container.sif hisat2'
+featureCounts='singularity exec /projects/dcking@colostate.edu/containers/Summit_RNAseq_container.sif featureCounts'
+
+
   ######### CHANGE <eID> TO YOUR EID: ############
 
 ## execute the RNA-seq_pipeline
