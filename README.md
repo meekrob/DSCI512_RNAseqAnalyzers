@@ -16,7 +16,7 @@ DSCI512_RNAseqAnalyzers
   * Locate the green **clone or download** button on the top right of this page. Click it.
   * Click on the clipboard icon. This will save a github URL address to your clipboard.
   * Switch over to summit.
-  * Navigate into /scratch/summit/<eID>@colostate.edu and use `git clone` to pull the information from github to your location on summit.
+  * Navigate into your folder for `PROJ04_GomezOrte2/02_scripts` and use `git clone` to pull the information from github to your location on summit.
   
 ```bash
 $ cd /scratch/summit/<eID>@colostate.edu    #Replace <eID> with your EID
@@ -25,7 +25,6 @@ $ git clone <paste path to github repository here>
 ```
 
 **Explore what you obtained.**
-
 
 
 Notice that instead of having a single script, you now have a few scripts. These will work in a **Two step** method for executing jobs on summit. The `execute` script calls the `analyze` script. 
@@ -50,6 +49,29 @@ bash RNAseq_analyzer_191204.sh ../../01_input/metadata_gomezOrte_subset.txt $SLU
 
 **Exercise**
   * Tailor your execute_RNAseq_pipeline.sh script if you need to.
+  
+**Answer**
+
+  *Your header should look like this 
+
+```bash
+#!/usr/bin/env bash
+
+#SBATCH --job-name=test_RNAseq_pipeline 
+#SBATCH --nodes=1
+#SBATCH --ntasks=6      # modify this number to reflect how many cores you want to use (up to 24)
+#SBATCH --partition=shas  #modify this to reflect which queue you want to use. Options are 'shas' and 'shas-testing'
+#SBATCH --qos=normal     # modify this to reflect which queue you want to use. Options are 'normal' and 'testing'
+#SBATCH --time=2:00:00   # modify this to reflect how long to let the job go. 
+#SBATCH --output=log_RNAseq_pipe_%j.txt
+
+
+  ######### CHANGE <eID> TO YOUR EID: ############
+
+## execute the RNA-seq_pipeline
+bash RNAseq_analyzer_191204.sh ../../01_input/metadata_gomezOrte_subset.txt $SLURM_NTASKS
+   ######### MODIFY the SECOND argument to point to YOUR metadata.file ######### 
+```
 
 -----
 
