@@ -169,9 +169,25 @@ done
 
 
 # HISAT2 to align to the genome
+# hisat2 cannot handle multiple instances running simultaneously in the same directory.
+# Therefore, convert all file/path arguments to absolute paths, create a temporary directory,
+# and run it from there.
+
+
 echo -e "\n>>> HISAT2: aligning each sample to the genome"
 outhisat2=$outputdir"03_hisat2/"
+outhisat2=$(realpath $outhisat2)
+hisat2path_absolute=$(realpath $hisatpath)
+
+
 mkdir -p $outhisat2
+
+# core files will fill this directory for the current job only
+rundir=$(realpath .hisat2_${SLURM_JOB_ID}_${SLURM_ARRAY_ID})
+# will return to current directory after this step
+srcdir=$(realpath $PWD)
+
+cd $rundir
 
 for (( counter=0; counter < ${#samples1[@]}; counter++ ))
 do
@@ -184,11 +200,19 @@ do
 	unzippedfile2=${sample2}
 
    	## execute hisat2
-   	cmd3="$hisat2 -x $hisat2path -1 $outputdir"02_fastp/"$samplename/$samplename"_trim_1.fastq" -2 $outputdir"02_fastp/"$samplename/$samplename"_trim_2.fastq" -S ${outhisat2}${samplename}.sam --summary-file ${outhisat2}${samplename}_summary.txt --no-unal -p $pthread"
+    trim1=$(realpath $outputdir"02_fastp/"$samplename/$samplename"_trim_1.fastq")
+    trim2=$(realpath $outputdir"02_fastp/"$samplename/$samplename"_trim_2.fastq")
+    samout=$(realpath ${outhisat2}${samplename}.sam)
+    summarypath=$(realpath ${outhisat2}${samplename}_summary.txt)
+
+   	cmd3="$hisat2 -x $hisat2path_absolute -1 $trim1 -2 $trim2 -S $samout --summary-file $summarypath --no-unal -p $pthread"
    	echo -e "\t$ $cmd3"
 	time eval $cmd3
 
 done
+
+cd $srcdir
+rmdir $rundir #should be empty now
 
 
 
