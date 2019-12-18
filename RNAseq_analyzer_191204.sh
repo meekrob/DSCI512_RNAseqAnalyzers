@@ -83,7 +83,7 @@ gtffile="<annotation.gtf>"
 DATE=`date +%Y-%m-%d`
 #OR
 #DATE='2018-10-16'
-outputdir="../../03_output/"$DATE"_output/"
+outputdir=$(realpath "../../03_output/"$DATE"_output/")
 
 
 ########## DONE MODIFYING ###############
@@ -187,8 +187,6 @@ rundir=$(realpath .hisat2_${SLURM_JOB_ID}_${SLURM_ARRAY_ID})
 # will return to current directory after this step
 srcdir=$(realpath $PWD)
 
-cd $rundir
-
 for (( counter=0; counter < ${#samples1[@]}; counter++ ))
 do
 	samplename=${names[$counter]}
@@ -205,15 +203,16 @@ do
     samout=$(realpath ${outhisat2}${samplename}.sam)
     summarypath=$(realpath ${outhisat2}${samplename}_summary.txt)
 
+    cd $rundir
    	cmd3="$hisat2 -x $hisat2path_absolute -1 $trim1 -2 $trim2 -S $samout --summary-file $summarypath --no-unal -p $pthread"
    	echo -e "\t$ $cmd3"
 	time eval $cmd3
+    cd $srcdir
 
 done
 
-cd $srcdir
+cd $srcdir # in case something caused the loop to exit
 rmdir $rundir #should be empty now
-
 
 
 # FEATURECOUNTS to tabulate reads per gene:
